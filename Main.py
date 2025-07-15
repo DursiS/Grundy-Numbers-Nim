@@ -1,5 +1,6 @@
 import Picking
 import Pile
+import Grundy
 
 # Deciding and printing the starting pile 
 pile = Picking.pile_pick()
@@ -13,9 +14,16 @@ while pile > 0:
     
     # User's turn
     if turn == True:
+        
+        best_move = Grundy.find_best_move(pile)
+        if best_move is None:
+            print(f"Optimal >> None.")
+        else:
+            print(f"Optimal >> {best_move} stone(s)")
+        
         user_remove = Picking.user_pick()
         pile -= user_remove
-        turn == False
+        turn = False
         
     # Computer's turn
     elif turn == False:
